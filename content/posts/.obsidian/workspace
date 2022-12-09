@@ -1,0 +1,95 @@
+{
+  "main": {
+    "id": "9ecba2aad27076ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "663ab6f873e69f83",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "APIGatewat中使用Dubbo泛化调用.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d5360a89a82363c1",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac7bde96d2f87b97",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f7393a4696a5dcb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "a364efaed89b56cd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1bfa86367d716346",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa4fa3763daa0af3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "25e08831c6b5590d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "APIGatewat中使用Dubbo泛化调用.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "663ab6f873e69f83",
+  "lastOpenFiles": [
+    "APIGatewat中使用Dubbo泛化调用.md",
+    "APIGateway中加密验签介绍.md",
+    "MyBatis整体架构设计.md"
+  ]
+}
