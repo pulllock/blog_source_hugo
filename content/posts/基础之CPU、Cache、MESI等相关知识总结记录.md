@@ -35,6 +35,15 @@ MESI就是上面四种状态的缩写。
 
 MESI协议通过缓存行的四种状态和总线事务机制来实现高速缓存一致性协议，目的就是让对共享的内存的读写串行化。
 
+## 消息类型
+
+- Read：当一个Cache需要读取某个缓存行消息的时候会发起Read消息
+- Read Response：Read Response是对Read的回应，Response可以来自其他CPU的缓存，也可以来自内存，当其他的CPU种对当前缓存行时M状态时，则会发起Read Response
+- Invalidate：Invalidate消息包含对应的内存的地址，接受到这个消息的缓存需要将自己缓存行的内容失效并响应
+- Invalidate Acknowledge：接收到Invalidate消息并删除缓存行中的数据后会向发起者回复Invalidate ACK
+- Read Invalidate：这个消息包含两个操作Read和Invalidate，它需要接收Read Response和多个Invalidate ACK响应
+- Write Back：该消息包含数据和地址，会将这个地址对应的数据刷到内存中
+
 ## MESI四种状态
 
 ### Modified
@@ -151,7 +160,7 @@ MESI协议和总线事务能够保证高速缓存的一致性，但是却会有�
 ## 存储缓存存在的问题
 
 1. 存储缓存大小有限制，如果写事件很多导致存储缓存满了，CPU依然会阻塞。
-2. CPU将值写入到存储缓存后，如果存储缓存还没处理完，后续该CPU需要到高速缓存读这个值的时候，就会出问题。解决方案是：Store Fowarding，就是CPU需要读新值的时候，先看存储缓存中是否存在，如果存在就直接读取，如果存储缓存中不存在，则去高速缓存中读取。
+2. CPU将值写入到存储缓存后，如果存储缓存还没处理完，后续该CPU需要到高速缓存读这个值的时候，就会出问题。解决方案是：Store Forwarding，就是CPU需要读新值的时候，先看存储缓存中是否存在，如果存在就直接读取，如果存储缓存中不存在，则去高速缓存中读取。
 
 # 失效队列（Invalid Queue）
 
@@ -188,8 +197,6 @@ CPU遇到读屏障时，必须先将失效队列中的写事务全部处理完�
 
 # 参考
 
-
-
 - [https://nextfe.com/memory-barrier/](https://nextfe.com/memory-barrier/)
 - [https://nextfe.com/cpu-cache/](https://nextfe.com/cpu-cache/)
 - [https://coolshell.cn/articles/20793.html](https://coolshell.cn/articles/20793.html)
@@ -197,4 +204,5 @@ CPU遇到读屏障时，必须先将失效队列中的写事务全部处理完�
 - [https://www.cnblogs.com/xiaoxiongcanguan/p/13184801.html](https://www.cnblogs.com/xiaoxiongcanguan/p/13184801.html)
 - [http://www.wowotech.net/kernel_synchronization/Why-Memory-Barriers.html](http://www.wowotech.net/kernel_synchronization/Why-Memory-Barriers.html)
 - [https://monkeysayhi.github.io/2017/12/28/%E4%B8%80%E6%96%87%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/](https://monkeysayhi.github.io/2017/12/28/%E4%B8%80%E6%96%87%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/)
+- [https://zhuanlan.zhihu.com/p/48157076](https://zhuanlan.zhihu.com/p/48157076)
 
