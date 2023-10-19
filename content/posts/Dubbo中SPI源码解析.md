@@ -585,7 +585,7 @@ private Class<?> createAdaptiveExtensionClass() {
 - 获取自适应的Compiler的扩展实现，获取到的AdaptiveCompiler实例，这个在上面已经说过了。
 - 最后使用具体的Compiler进行生成代码的编译。
 
-这里只看第一步，生成自适应扩展类的代码这步，这里代码有点长，不在此贴出来了，参考我的github上ExtensionLoader的源码注释[ExtensionLoader.java](https://github.com/dachengxi/Dubbo2.5.4SourceCode/blob/master/dubbo-common/src/main/java/com/alibaba/dubbo/common/extension/ExtensionLoader.java)。
+这里只看第一步，生成自适应扩展类的代码这步，这里代码有点长，不在此贴出来了，参考我的github上ExtensionLoader的源码注释[ExtensionLoader.java](https://github.com/pulllock/Dubbo2.5.4SourceCode/blob/master/dubbo-common/src/main/java/com/alibaba/dubbo/common/extension/ExtensionLoader.java)。
 
 # @Adaptive注解
 

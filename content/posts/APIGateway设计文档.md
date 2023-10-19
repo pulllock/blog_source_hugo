@@ -135,4 +135,4 @@ APIGateway的设计文档，包括整体架构和数据库设计。
 | out_id        | bigint(20)   | Y        |         |        | 外部系统id |
 | ip            | varchar(255) | N        |         |        | 黑名单ip   |
 
-源码：[https://github.com/dachengxi/APIGateway](https://github.com/dachengxi/APIGateway)
+源码：[https://github.com/pulllock/APIGateway](https://github.com/pulllock/APIGateway)

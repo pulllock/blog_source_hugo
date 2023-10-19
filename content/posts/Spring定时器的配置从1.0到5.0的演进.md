@@ -34,14 +34,13 @@ Quartz Scheduler使用Triggers，Jobs，JobDetail来实现定时器功能。Spri
 CountUserJob：
 
 ```
-package me.cxis.spring.scheduling.quartz;
+package fun.pullock.spring.scheduling.quartz;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
- * Created by cheng.xi on 2017-04-19 11:00.
  * 定时的统计信息的JOb
  * 比如这里是定时的统计系统中总的用户数，总的用户数是我查询到的数和我在xml指定的数的总和
  */
@@ -68,7 +67,7 @@ xml中声明一个job：
 <!--定义一个JobDetailBean类型的Job，用来统计系统中总的人数，adminUser指的是系统中预先留的管理员数目-->
 <bean name="countUserJob" class="org.springframework.scheduling.quartz.JobDetailBean">
     <property name="jobClass">
-        <value>me.cxis.spring.scheduling.quartz.CountUserJob</value>
+        <value>fun.pullock.spring.scheduling.quartz.CountUserJob</value>
     </property>
     <property name="jobDataAsMap">
         <map>
@@ -86,10 +85,9 @@ MethodInvokingJobDetailFactoryBean可以指定方法。直接看例子。
 GetJob：
 
 ```
-package me.cxis.spring.scheduling.quartz;
+package fun.pullock.spring.scheduling.quartz;
 
 /**
- * Created by cheng.xi on 2017-04-19 11:01.
  * 定时的获取信息的Job，定时从文件中获取数据
  */
 public class GetJob {
@@ -104,7 +102,7 @@ xml中配置：
 
 ```
 <!--从文件中获取信息的bean-->
-<bean id="getJob" class="me.cxis.spring.scheduling.quartz.GetJob"/>
+<bean id="getJob" class="fun.pullock.spring.scheduling.quartz.GetJob"/>
 
 <!--定义一个MethodInvokingJobDetailFactoryBean，从文件中获取数据的Job-->
 <bean id="getJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -165,14 +163,11 @@ Triggers也有两种方式，一种是SimpleTriggerBean，一种是CronTriggerBe
 Main：
 
 ```
-package me.cxis.spring.scheduling.quartz;
+package fun.pullock.spring.scheduling.quartz;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Created by cheng.xi on 2017-04-19 11:34.
- */
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:scheduling-quartz.xml");
@@ -194,12 +189,11 @@ public class Main {
 CountUserTask：
 
 ```
-package me.cxis.spring.scheduling.timer;
+package fun.pullock.spring.scheduling.timer;
 
 import java.util.TimerTask;
 
 /**
- * Created by cheng.xi on 2017-04-19 11:00.
  * 定时的统计信息的 task
  * 比如这里是定时的统计系统中总的用户数，总的用户数是我查询到的数和我在xml指定的数的总和
  */
@@ -223,7 +217,7 @@ public class CountUserTask extends TimerTask{
 
 ```
 <!--统计用户数的bean-->
-<bean id="countUserTask" class="me.cxis.spring.scheduling.timer.CountUserTask">
+<bean id="countUserTask" class="fun.pullock.spring.scheduling.timer.CountUserTask">
     <property name="adminUser">
         <value>10</value>
     </property>
@@ -234,10 +228,9 @@ public class CountUserTask extends TimerTask{
 GetTask:
 
 ```
-package me.cxis.spring.scheduling.timer;
+package fun.pullock.spring.scheduling.timer;
 
 /**
- * Created by cheng.xi on 2017-04-19 11:01.
  * 定时的获取信息的task，定时从文件中获取数据
  */
 public class GetTask {
@@ -251,7 +244,7 @@ xml中配置：
 
 ```
 <!--从文件中获取信息的bean-->
-<bean id="getTaskBean" class="me.cxis.spring.scheduling.timer.GetTask"></bean>
+<bean id="getTaskBean" class="fun.pullock.spring.scheduling.timer.GetTask"></bean>
 
 <!--使用MethodInvokingTimerTaskFactoryBean-->
 <bean id="getTask" class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
@@ -308,7 +301,7 @@ xml中配置：
 ### 测试
 
 ```
-package me.cxis.spring.scheduling.timer;
+package fun.pullock.spring.scheduling.timer;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -316,9 +309,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by cheng.xi on 2017-04-19 11:34.
- */
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:scheduling-timer.xml");
@@ -348,10 +338,9 @@ Spring2.0中新定义了一个TaskExecutor接口，增加了对线程池的支�
 首先写实际执行业务的类，
 
 ```
-package me.cxis.spring.scheduling.executor;
+package fun.pullock.spring.scheduling.executor;
 
 /**
- * Created by cheng.xi on 2017-04-19 14:51.
  * 从文件中获取数据的Task
  */
 public class GetDataFromFileTask implements Runnable {
@@ -372,14 +361,13 @@ public class GetDataFromFileTask implements Runnable {
 然后是执行任务的定时器：
 
 ```
-package me.cxis.spring.scheduling.executor;
+package fun.pullock.spring.scheduling.executor;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.TimerTask;
 
 /**
- * Created by cheng.xi on 2017-04-19 14:54.
  * 批量从文件中获取数据的定时器
  */
 public class GetDataFromFileScheduler extends TimerTask {
@@ -424,7 +412,7 @@ public class GetDataFromFileScheduler extends TimerTask {
     </bean>
 
     <!--GetDataFromFileScheduler，获取数据的定时器-->
-    <bean id="getDataFromFileScheduler" class="me.cxis.spring.scheduling.executor.GetDataFromFileScheduler">
+    <bean id="getDataFromFileScheduler" class="fun.pullock.spring.scheduling.executor.GetDataFromFileScheduler">
         <property name="taskExecutor">
             <ref local="taskExecutor"/>
         </property>
@@ -458,14 +446,11 @@ public class GetDataFromFileScheduler extends TimerTask {
 测试类：
 
 ```
-package me.cxis.spring.scheduling.executor;
+package fun.pullock.spring.scheduling.executor;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Created by cheng.xi on 2017-04-19 15:11.
- */
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:scheduling-executor.xml");
@@ -487,13 +472,12 @@ public class Main {
 CountUserTask：
 
 ```
-package me.cxis.spring.scheduling.annotation;
+package fun.pullock.spring.scheduling.annotation;
 
 
 import org.springframework.scheduling.annotation.Scheduled;
 
 /**
- * Created by cheng.xi on 2017-04-19 11:00.
  * 定时的统计信息的Task
  *
  */
@@ -526,23 +510,20 @@ public class CountUserTask{
     <task:annotation-driven />
 
     <!--执行任务的bean-->
-    <bean id="countUserTask" class="me.cxis.spring.scheduling.annotation.CountUserTask"/>
+    <bean id="countUserTask" class="fun.pullock.spring.scheduling.annotation.CountUserTask"/>
 </beans>
 ```
 
 测试：
 
 ```
-package me.cxis.spring.scheduling.annotation;
+package fun.pullock.spring.scheduling.annotation;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 
-/**
- * Created by cheng.xi on 2017-04-19 16:08.
- */
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:scheduling-annotation.xml");

@@ -1,5 +1,5 @@
 # 网站地址
-baseURL: ""
+baseURL: "https://pullock.fun"
 # 语言
 #nlanguageCode: "zh-cn"
 # 默认的内容语言
@@ -55,4 +55,4 @@ menu:
   - name: Github
     url: https://github.com/pulllock
     weight: 3
-copyright: Pullock
+copyright: Pullock.fun

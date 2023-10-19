@@ -33,13 +33,13 @@ tags:
 定义spring.schemas文件：
 
 ```properties
-https\://www.cxis.me/schema/dcc/dcc-config-1.0.xsd=me/cxis/dcc/spring/config/dcc-config.xsd
+https\://www.pullock.fun/schema/dcc/dcc-config-1.0.xsd=fun/pullock/dcc/spring/config/dcc-config.xsd
 ```
 
 定义spring.handlers文件：
 
 ```properties
-https\://www.cxis.me/schema/dcc=me.cxis.dcc.spring.DccConfigNamespaceHandler
+https\://www.pullock.fun/schema/dcc=fun.pullock.dcc.spring.DccConfigNamespaceHandler
 ```
 
 定义dcc-config.xsd文件
@@ -47,10 +47,10 @@ https\://www.cxis.me/schema/dcc=me.cxis.dcc.spring.DccConfigNamespaceHandler
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xsd:schema xmlns="https://www.cxis.me/schema/dcc"
+<xsd:schema xmlns="https://www.pullock.fun/schema/dcc"
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		xmlns:beans="http://www.springframework.org/schema/beans"
-		targetNamespace="https://www.cxis.me/schema/dcc"
+		targetNamespace="https://www.pullock.fun/schema/dcc"
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
@@ -95,9 +95,9 @@ public class DccConfigDefinitionParser implements BeanDefinitionParser {
 
 运行时监听zookeeper的变更，使用反射更新@Value注解的字段值。
 
-具体代码参照https://github.com/dachengxi/DynamicConfigCenter中DynamicConfigCenter-client下的`me.cxis.dcc.spring.DccConfigPlaceholderConfigurer`。
+具体代码参照https://github.com/pulllock/DynamicConfigCenter中DynamicConfigCenter-client下的`fun.pullock.dcc.spring.DccConfigPlaceholderConfigurer`。
 
 
 
-源码：[https://github.com/dachengxi/DynamicConfigCenter](https://github.com/dachengxi/DynamicConfigCenter)
+源码：[https://github.com/pulllock/DynamicConfigCenter](https://github.com/pulllock/DynamicConfigCenter)
 

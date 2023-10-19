@@ -51,7 +51,7 @@ if (尝试释放锁 && 头结点的waitStatus是SIGNAL) {
 
 # 源码
 
-参照源码解析：[https://github.com/dachengxi/Java8u192SourceCode](https://github.com/dachengxi/Java8u192SourceCode)
+参照源码解析：[https://github.com/pulllock/Java8u192SourceCode](https://github.com/pulllock/Java8u192SourceCode)
 
 
 

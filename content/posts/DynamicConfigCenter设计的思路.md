@@ -19,7 +19,7 @@ tags:
 - 基于Zookeeper
 - 集成Spring
 
-源码：[https://github.com/dachengxi/DynamicConfigCenter](https://github.com/dachengxi/DynamicConfigCenter)
+源码：[https://github.com/pulllock/DynamicConfigCenter](https://github.com/pulllock/DynamicConfigCenter)
 
 关于具体的思路和实现可以参考下面的文章。
 

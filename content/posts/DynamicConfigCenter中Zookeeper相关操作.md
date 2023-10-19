@@ -65,7 +65,7 @@ public class CuratorBasicOperation {
         curatorClient.start();
 
         // 节点事件监听
-        NodeCache nodeCache = new NodeCache(curatorClient, "/my_root/cxis_2/config");
+        NodeCache nodeCache = new NodeCache(curatorClient, "/my_root/pullock_2/config");
         nodeCache.start();
         nodeCache
             .getListenable()
@@ -94,7 +94,7 @@ public class CuratorBasicOperation {
             .create()
             .creatingParentsIfNeeded()
             .withMode(CreateMode.PERSISTENT)
-            .forPath("/my_root/cxis_1/config", "this is value for cxis_1".getBytes());
+            .forPath("/my_root/pullock_1/config", "this is value for pullock_1".getBytes());
 
         System.out.println("创建节点result1: " + result1);
 
@@ -102,7 +102,7 @@ public class CuratorBasicOperation {
             .create()
             .creatingParentsIfNeeded()
             .withMode(CreateMode.PERSISTENT)
-            .forPath("/my_root/cxis_2/config", "this is value for cxis_2".getBytes());
+            .forPath("/my_root/pullock_2/config", "this is value for pullock_2".getBytes());
 
         System.out.println("创建节点result2: " + result2);
 
@@ -110,7 +110,7 @@ public class CuratorBasicOperation {
             .create()
             .creatingParentsIfNeeded()
             .withMode(CreateMode.PERSISTENT)
-            .forPath("/my_root/cxis_3/config", "this is value for cxis_3".getBytes());
+            .forPath("/my_root/pullock_3/config", "this is value for pullock_3".getBytes());
 
         System.out.println("创建节点result3: " + result3);
 
@@ -119,35 +119,35 @@ public class CuratorBasicOperation {
         System.out.println("获取子节点children: " + children);
 
         // 获取节点数据
-        String value3 = new String(curatorClient.getData().forPath("/my_root/cxis_3/config"));
+        String value3 = new String(curatorClient.getData().forPath("/my_root/pullock_3/config"));
         System.out.println("获取节点数据value3: " + value3);
 
         // 获取节点数据和状态
         Stat stat = new Stat();
-        String value3WithStat = new String(curatorClient.getData().storingStatIn(stat).forPath("/my_root/cxis_3/config"));
+        String value3WithStat = new String(curatorClient.getData().storingStatIn(stat).forPath("/my_root/pullock_3/config"));
         System.out.println("获取节点数据和状态value3WithStat: " + value3WithStat + ", stat: " + stat);
 
         // 获取节点数据
-        String value1 = new String(curatorClient.getData().forPath("/my_root/cxis_1/config"));
+        String value1 = new String(curatorClient.getData().forPath("/my_root/pullock_1/config"));
         System.out.println("获取节点数据value1: " + value1);
 
         // 判断结点是否存在
-        Stat stat1 = curatorClient.checkExists().forPath("/my_root/cxis_1/config");
+        Stat stat1 = curatorClient.checkExists().forPath("/my_root/pullock_1/config");
         System.out.println("判断结点是否存在stat1: " + stat1);
 
         // 删除节点和子节点
-        curatorClient.delete().guaranteed().deletingChildrenIfNeeded().withVersion(-1).forPath("/my_root/cxis_1");
+        curatorClient.delete().guaranteed().deletingChildrenIfNeeded().withVersion(-1).forPath("/my_root/pullock_1");
 
         // 判断结点是否存在
-        Stat stat2 = curatorClient.checkExists().forPath("/my_root/cxis_1/config");
+        Stat stat2 = curatorClient.checkExists().forPath("/my_root/pullock_1/config");
         System.out.println("判断结点是否存在stat2: " + stat2);
 
         // 修改节点数据
-        Stat stat3 = curatorClient.setData().forPath("/my_root/cxis_2/config", "this is value for cxis_2_new".getBytes());
+        Stat stat3 = curatorClient.setData().forPath("/my_root/pullock_2/config", "this is value for pullock_2_new".getBytes());
         System.out.println("修改节点数据stat3: " + stat3);
 
         // 获取节点数据
-        String value2AfterUpdate = new String(curatorClient.getData().forPath("/my_root/cxis_2/config"));
+        String value2AfterUpdate = new String(curatorClient.getData().forPath("/my_root/pullock_2/config"));
         System.out.println("获取节点数据value2AfterUpdate: " + value2AfterUpdate);
 
         Thread.sleep(1000);
@@ -156,4 +156,4 @@ public class CuratorBasicOperation {
 }
 ```
 
-源码：[https://github.com/dachengxi/DynamicConfigCenter](https://github.com/dachengxi/DynamicConfigCenter)
+源码：[https://github.com/pulllock/DynamicConfigCenter](https://github.com/pulllock/DynamicConfigCenter)

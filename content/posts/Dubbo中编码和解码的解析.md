@@ -91,7 +91,7 @@ protected void doOpen() throws Throwable {
     channel = bootstrap.bind(getBindAddress());
 }
 ```
-这里就在Netty的pipeline中添加了编解码器。这里涉及到Netty的相关流程，可以先了解下[Netty3服务端流程简介](http://cxis.me/2017/03/20/Netty3%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B/)。
+这里就在Netty的pipeline中添加了编解码器。这里涉及到Netty的相关流程，可以先了解下。
 
 decoder为解码器，是一个SimpleChannelUpstreamHandler，从Socket到Netty中的时候，需要解码，也就是服务提供端接收到消费者的请求的时候，需要解码。
 

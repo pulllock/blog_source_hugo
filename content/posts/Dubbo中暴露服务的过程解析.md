@@ -137,7 +137,7 @@ doExportUrls方法先调用loadRegistries获取所有的注册中心url，然后
 获取注册中心url，会把注册的信息都放在一个URL对象中，一个URL内容如下：
     
 ```
-registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-provider&application.version=1.0&dubbo=2.5.3&environment=product&organization=china&owner=cheng.xi&pid=2939&registry=zookeeper&timestamp=1488898049284
+registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-provider&application.version=1.0&dubbo=2.5.3&environment=product&organization=china&owner=Pullock&pid=2939&registry=zookeeper&timestamp=1488898049284
 ```
     
 doExportUrlsFor1Protocol根据不同的协议将服务以URL形式暴露。如果scope配置为none则不暴露，如果服务未配置成remote，则本地暴露exportLocal，如果未配置成local，则注册服务registryProcotol。
@@ -145,7 +145,7 @@ doExportUrlsFor1Protocol根据不同的协议将服务以URL形式暴露。如�
  这里的URL是：
     
 ```
-dubbo://192.168.1.100:20880/dubbo.common.hello.service.HelloService?anyhost=true&application=dubbo-provider&application.version=1.0&delay=5000&dubbo=2.5.3&environment=product&interface=dubbo.common.hello.service.HelloService&methods=sayHello&organization=china&owner=cheng.xi&pid=2939&side=provider&timestamp=1488898464953
+dubbo://192.168.1.100:20880/dubbo.common.hello.service.HelloService?anyhost=true&application=dubbo-provider&application.version=1.0&delay=5000&dubbo=2.5.3&environment=product&interface=dubbo.common.hello.service.HelloService&methods=sayHello&organization=china&owner=Pullock&pid=2939&side=provider&timestamp=1488898464953
 ```
 ### 本地暴露
 这时候会先做本地暴露，exportLocal(url);：
@@ -156,7 +156,7 @@ private void exportLocal(URL url) {
     	//这时候转成本地暴露的url：injvm://127.0.0.1/dubbo.common.hello.service.HelloService?anyhost=true&
         //application=dubbo-provider&application.version=1.0&dubbo=2.5.3&environment=product&
         //interface=dubbo.common.hello.service.HelloService&methods=sayHello&
-        //organization=china&owner=cheng.xi&pid=720&side=provider&timestamp=1489716708276
+        //organization=china&owner=Pullock&pid=720&side=provider&timestamp=1489716708276
         URL local = URL.valueOf(url.toFullString())
                 .setProtocol(Constants.LOCAL_PROTOCOL)
                 .setHost(NetUtils.LOCALHOST)
@@ -204,7 +204,7 @@ Invoker<?> invoker = proxyFactory.getInvoker(ref, (Class) interfaceClass, regist
 public Invoker getInvoker(Object arg0, Class arg1, URL arg2) throws Object {
     if (arg2 == null)  throw new IllegalArgumentException("url == null");
 	//传进来的url是dubbo://192.168.110.197:20880/dubbo.common.hello.service.HelloService?anyhost=true&application=dubbo-provider
-    //&application.version=1.0&dubbo=2.5.3&environment=product&interface=dubbo.common.hello.service.HelloService&methods=sayHello&organization=china&owner=cheng.xi
+    //&application.version=1.0&dubbo=2.5.3&environment=product&interface=dubbo.common.hello.service.HelloService&methods=sayHello&organization=china&owner=Pullock
     //&pid=28191&side=provider&timestamp=1489027396094
     URL url = arg2;
     //没有proxy参数配置，默认使用javassist
@@ -497,7 +497,7 @@ private Registry getRegistry(final Invoker<?> originInvoker){
         //dubbo.common.hello.service.HelloService%3Fanyhost%3Dtrue%26application%3Ddubbo-provider%26
         //application.version%3D1.0%26dubbo%3D2.5.3%26environment%3Dproduct%26
         //interface%3Ddubbo.common.hello.service.HelloService%26methods%3DsayHello%26
-        //organization%3Dchina%26owner%3Dcheng.xi%26pid%3D9457%26side%3Dprovider%26timestamp%3D1489807681627&organization=china&owner=cheng.xi&
+        //organization%3Dchina%26owner%3DPullock%26pid%3D9457%26side%3Dprovider%26timestamp%3D1489807681627&organization=china&owner=Pullock&
         //pid=9457&timestamp=1489807680193
         registryUrl = registryUrl.setProtocol(protocol).removeParameter(Constants.REGISTRY_KEY);
     }
@@ -718,7 +718,7 @@ final URL registedProviderUrl = getRegistedProviderUrl(originInvoker);
 //dubbo://192.168.1.100:20880/dubbo.common.hello.service.HelloService?
 //anyhost=true&application=dubbo-provider&application.version=1.0&dubbo=2.5.3&environment=product&
 //interface=dubbo.common.hello.service.HelloService&methods=sayHello&
-//organization=china&owner=cheng.xi&pid=9457&side=provider&timestamp=1489807681627
+//organization=china&owner=Pullock&pid=9457&side=provider&timestamp=1489807681627
 ```
 ### 注册到注册中心
 然后调用`registry.register(registedProviderUrl)`注册到注册中心（在RegistryProtocol中）。register方法的实现在FailbackRegistry中：
@@ -766,7 +766,7 @@ protected void doRegister(URL url) {
         //dubbo.common.hello.service.HelloService%3Fanyhost%3Dtrue%26application%3Ddubbo-provider%26
         //application.version%3D1.0%26dubbo%3D2.5.3%26environment%3Dproduct%26interface%3D
         //dubbo.common.hello.service.HelloService%26methods%3DsayHello%26
-        //organization%3Dchina%26owner%3Dcheng.xi%26pid%3D8920%26side%3Dprovider%26timestamp%3D1489828029449
+        //organization%3Dchina%26owner%3DPullock%26pid%3D8920%26side%3Dprovider%26timestamp%3D1489828029449
         //默认创建的节点是临时节点
         zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true));
     } catch (Throwable e) { }
@@ -783,7 +783,7 @@ protected void doRegister(URL url) {
             anyhost%3Dtrue%26application%3Ddubbo-provider%26
             application.version%3D1.0%26dubbo%3D2.5.3%26environment%3Dproduct%26
             interface%3Ddubbo.common.hello.service.HelloService%26methods%3DsayHello%26
-            organization%3Dchina%26owner%3Dcheng.xi%26pid%3D13239%26side%3D
+            organization%3Dchina%26owner%3DPullock%26pid%3D13239%26side%3D
             provider%26timestamp%3D1489829293525
 ```
 
@@ -808,13 +808,13 @@ private <T> ExporterChangeableWrapper<T>  doLocalExport(final Invoker<T> originI
     //dubbo.common.hello.service.HelloService%3Fanyhost%3Dtrue%26application%3Ddubbo-provider%26
     //application.version%3D1.0%26dubbo%3D2.5.3%26environment%3Dproduct%26
     //interface%3Ddubbo.common.hello.service.HelloService%26methods%3DsayHello%26
-    //organization%3Dchina%26owner%3Dcheng.xi%26pid%3D7876%26side%3Dprovider%26timestamp%3D1489057305001&
-    //organization=china&owner=cheng.xi&pid=7876&registry=zookeeper&timestamp=1489057304900
+    //organization%3Dchina%26owner%3DPullock%26pid%3D7876%26side%3Dprovider%26timestamp%3D1489057305001&
+    //organization=china&owner=Pullock&pid=7876&registry=zookeeper&timestamp=1489057304900
     
     //从原始的invoker中得到的key：
     //dubbo://10.42.0.1:20880/dubbo.common.hello.service.HelloService?anyhost=true&application=dubbo-provider&
     //application.version=1.0&dubbo=2.5.3&environment=product&interface=dubbo.common.hello.service.HelloService&
-    //methods=sayHello&organization=china&owner=cheng.xi&pid=7876&side=provider&timestamp=1489057305001
+    //methods=sayHello&organization=china&owner=Pullock&pid=7876&side=provider&timestamp=1489057305001
     String key = getCacheKey(originInvoker);
     ExporterChangeableWrapper<T> exporter = (ExporterChangeableWrapper<T>) bounds.get(key);
     if (exporter == null) {
@@ -923,7 +923,7 @@ public <T> Exporter<T> export(Invoker<T> invoker) throws RpcException {
     //anyhost=true&application=dubbo-provider&
     //application.version=1.0&dubbo=2.5.3&environment=product&
     //interface=dubbo.common.hello.service.HelloService&
-    //methods=sayHello&organization=china&owner=cheng.xi&
+    //methods=sayHello&organization=china&owner=Pullock&
     //pid=7876&side=provider&timestamp=1489057305001
     URL url = invoker.getUrl();
 
@@ -1001,7 +1001,7 @@ private void openServer(URL url) {
 //anyhost=true&application=dubbo-provider&
 //application.version=1.0&dubbo=2.5.3&environment=product&
 //interface=dubbo.common.hello.service.HelloService&
-//methods=sayHello&organization=china&owner=cheng.xi&
+//methods=sayHello&organization=china&owner=Pullock&
 //pid=720&side=provider&timestamp=1489716708276
 private ExchangeServer createServer(URL url) {
     //默认开启server关闭时发送readonly事件

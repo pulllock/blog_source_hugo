@@ -873,7 +873,7 @@ private Map<String, Invoker<T>> toInvokers(List<URL> urls) {
     	//此时url是dubbo://192.168.110.197:20880/dubbo.common.hello.service.HelloService?anyhost=true&
         //application=dubbo-provider&application.version=1.0&dubbo=2.5.3&environment=product&
         //interface=dubbo.common.hello.service.HelloService&methods=sayHello&organization=china&
-        //owner=cheng.xi&pid=5631&side=provider&timestamp=1489367571986
+        //owner=Pullock&pid=5631&side=provider&timestamp=1489367571986
         //从注册中心获取到的携带提供者信息的url
         //如果reference端配置了protocol，则只选择匹配的protocol
         if (queryProtocols != null && queryProtocols.length() >0) {

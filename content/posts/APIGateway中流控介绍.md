@@ -100,4 +100,4 @@ public class IPCounter {
 
 可以使用guava包中的令牌桶算法限流器。
 
-源码：https://github.com/dachengxi/APIGateway
+源码：https://github.com/pulllock/APIGateway

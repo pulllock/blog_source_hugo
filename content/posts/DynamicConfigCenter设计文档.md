@@ -16,7 +16,7 @@ tags:
 - DynamicConfigCenter-admin，配置等的管理
 - DynamicConfigCenter-client，应用依赖的客户端包
 
-源码：[https://github.com/dachengxi/DynamicConfigCenter](https://github.com/dachengxi/DynamicConfigCenter)
+源码：[https://github.com/pulllock/DynamicConfigCenter](https://github.com/pulllock/DynamicConfigCenter)
 
 都是使用draw io画的图，源文件可以导入修改。
 
@@ -86,4 +86,4 @@ draw io源文件：[DynamicConfigCenter数据库设计](/DynamicConfigCenter设�
 
 # Zookeeper节点
 
-数据节点：`/cxis/dcc/${group_name}/key`
+数据节点：`/pullock/dcc/${group_name}/key`
